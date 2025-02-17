@@ -8,8 +8,12 @@ export default class SaleRegistrationService {
             },
             body: JSON.stringify(body),
         });
-
-        return response.json();
+        const requestReponse = await response.json();
+        if(requestReponse.status !== 201){
+            return { error: true };
+        }
+        
+        return requestReponse;
     }
     
 }
